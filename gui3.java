@@ -1,18 +1,29 @@
 package charGen;
 
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.*;
+
 //import javax.swing.text.*;
 import javax.swing.AbstractAction;
+import javax.swing.border.Border;
 
-public class gui3 {
+public class gui3 implements ActionListener {
 	charGen charStart;
 	JButton genB;
 	JFrame main;
 	JPanel pane;
 	JPanel mainPane;
 
+	// Titles
+	JLabel dnd;
+	JLabel charDet;
+	// Character
+	JPanel charPane;
+	JPanel racejobbg;
+	
 	String race;
 	JLabel raceL;
 	JTextField raceT;
@@ -22,18 +33,23 @@ public class gui3 {
 	String bg;
 	JLabel bgL;
 	JTextField bgT;
+	// JTextArea bgA;
 	String persona;
 	JLabel personaL;
-	JTextField personaT;
+	// JTextField personaT;
+	JTextArea personaA;
 	String ideal;
 	JLabel idealL;
-	JTextField idealT;
+	// JTextField idealT;
+	JTextArea idealA;
 	String bond;
 	JLabel bondL;
-	JTextField bondT;
+	// JTextField bondT;
+	JTextArea bondA;
 	String flaw;
 	JLabel flawL;
-	JTextField flawT;
+	// JTextField flawT;
+	JTextArea flawA;
 
 	public static void main(String[] args) {
 		// charStart = new charGen();
@@ -51,69 +67,142 @@ public class gui3 {
 		main = new JFrame("D&D Character Generator");
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		pane = new JPanel(new GridLayout(0, 2));
+		pane = new JPanel(new GridBagLayout());
+		Border blackline = BorderFactory.createLineBorder(Color.black);
+		pane.setBorder(blackline);
 
 		mainPane = new JPanel();
 		mainPane.setLayout(new BoxLayout(mainPane, BoxLayout.PAGE_AXIS));
+		
+		
+		charPane = new JPanel(new GridBagLayout());
+		charPane.setBorder(blackline);
+		GridBagConstraints c = new GridBagConstraints();
+		
+		racejobbg = new JPanel(new GridLayout(6, 1));
+		racejobbg.setBorder(blackline);
 
 		// Labels and Buttons
 
 		// Generate Button
 		genB = new JButton("Generate");
-		genB.addActionListener(new ButtonAction("Action"));
+		genB.addActionListener(this);
+		genB.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		// textField = new JTextField(20);
 		
-		raceL = new JLabel("Race: ", JLabel.RIGHT);
-		raceT = new JTextField(25);
+		// Generate Title
+		dnd = new JLabel("D&D Character Generator", JLabel.CENTER);
+		dnd.setAlignmentX(Component.CENTER_ALIGNMENT);
+		charDet = new JLabel("Character", JLabel.CENTER);
+		charDet.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+	
+		raceL = new JLabel("Race", JLabel.CENTER);
+		raceT = new JTextField(10);
 		raceT.setEditable(false);
+		raceT.setHorizontalAlignment(JTextField.CENTER);
 
-		jobL = new JLabel("Class: ", JLabel.RIGHT);
-		jobT = new JTextField(25);
+		jobL = new JLabel("Class", JLabel.CENTER);
+		jobT = new JTextField(10);
 		jobT.setEditable(false);
+		jobT.setHorizontalAlignment(JTextField.CENTER);
 
-		bgL = new JLabel("Background: ", JLabel.RIGHT);
-		bgT = new JTextField(25);
+		bgL = new JLabel("Background", JLabel.CENTER);
+		bgT = new JTextField(10);
 		bgT.setEditable(false);
+		bgT.setHorizontalAlignment(JTextField.CENTER);
 		
 		personaL = new JLabel("Personality: ", JLabel.RIGHT);
-		personaT = new JTextField(25);
-		personaT.setEditable(false);
-		
+		personaA = new JTextArea(2, 40);
+		personaA.setEditable(false);
+		personaA.setLineWrap(true);
+		personaA.setWrapStyleWord(true);
+
 		idealL = new JLabel("Ideal: ", JLabel.RIGHT);
-		idealT = new JTextField(25);
-		idealT.setEditable(false);
-		
+		idealA = new JTextArea(2, 40);
+		idealA.setEditable(false);
+		idealA.setLineWrap(true);
+		idealA.setWrapStyleWord(true);
+
 		bondL = new JLabel("Bond: ", JLabel.RIGHT);
-		bondT = new JTextField(25);
-		bondT.setEditable(false);
-		
+		bondA = new JTextArea(2, 40);
+		bondA.setEditable(false);
+		bondA.setLineWrap(true);
+		bondA.setWrapStyleWord(true);
+
 		flawL = new JLabel("Flaw: ", JLabel.RIGHT);
-		flawT = new JTextField(25);
-		flawT.setEditable(false);
+		flawA = new JTextArea(2, 40);
+		flawA.setEditable(false);
+		flawA.setLineWrap(true);
+		flawA.setWrapStyleWord(true);
+
 		
-		pane.add(raceL);
-		pane.add(raceT);
-		pane.add(jobL);
-		pane.add(jobT);
-		pane.add(bgL);
-		pane.add(bgT);
-		pane.add(personaL);
-		pane.add(personaT);
-		pane.add(idealL);
-		pane.add(idealT);
-		pane.add(bondL);
-		pane.add(bondT);
-		pane.add(flawL);
-		pane.add(flawT);
+		
+		
+		racejobbg.add(raceL);
+		racejobbg.add(raceT);
+		racejobbg.add(jobL);
+		racejobbg.add(jobT);
+		racejobbg.add(bgL);
+		racejobbg.add(bgT);
+		
+		c.ipadx = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		//c.weightx = 0.5;
+		charPane.add(racejobbg,c);
+		
+		c.gridx = 1;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		//c.weightx = 0;
+		charPane.add(pane, c);
+		
+		
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		pane.add(personaL, c);
+		c.gridx = 1;
+		c.gridy = 0;
+		pane.add(personaA, c);
+		c.gridx = 0;
+		c.gridy = 1;
+		pane.add(idealL, c);
+		c.gridx = 1;
+		c.gridy = 1;
+		pane.add(idealA, c);
+		c.gridx = 0;
+		c.gridy = 2;
+		pane.add(bondL, c);
+		c.gridx = 1;
+		c.gridy = 2;
+		pane.add(bondA, c);
+		c.gridx = 0;
+		c.gridy = 3;
+		pane.add(flawL, c);
+		c.gridx = 1;
+		c.gridy = 3;
+		pane.add(flawA, c);
 
-
-
+		
+		mainPane.add(dnd);
+		mainPane.add(charDet);
+		mainPane.add(charPane);
+		//mainPane.add(pane);
 		mainPane.add(genB);
-		mainPane.add(pane);
 		main.setContentPane(mainPane);
 
 		// Display the window.
 		main.pack();
+		//main.setSize(699, 685);
+		main.setSize(699, 275);
+		main.setResizable(false);
+		
 		main.setVisible(true);
 
 	}
@@ -123,45 +212,32 @@ public class gui3 {
 		createGUI();
 	}
 
-	private class ButtonAction extends AbstractAction {
-		public ButtonAction(String name) {
-			super(name);
-			// putValue(MNEMONIC_KEY, mnemonic);
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == genB) {
-				// System.out.println("button pressed");
-				race = charStart.raceSelect();
-				raceT.setText(race);
-				
-				job = charStart.jobSelect();
-				jobT.setText(job);
-				
-				bg = charStart.bgSelect(job);
-				bgT.setText(bg);
-				
-				persona = charStart.personSelect(bg);
-				personaT.setText(persona);
-				
-				ideal = charStart.idealSel(bg);
-				idealT.setText(ideal);
-				
-				bond = charStart.bondSel(bg);
-				bondT.setText(bond);
-				
-				flaw = charStart.flawSel(bg);
-				flawT.setText(flaw);
-				
-				
-			}
-		}
-
-	}
-
+@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == genB) {
+			// System.out.println("button pressed");
+			race = charStart.raceSelect();
+			raceT.setText(race);
 
+			job = charStart.jobSelect();
+			jobT.setText(job);
+
+			bg = charStart.bgSelect(job);
+			bgT.setText(bg);
+
+			persona = charStart.personSelect(bg);
+			personaA.setText(persona);
+
+			ideal = charStart.idealSel(bg);
+			idealA.setText(ideal);
+
+			bond = charStart.bondSel(bg);
+			bondA.setText(bond);
+
+			flaw = charStart.flawSel(bg);
+			flawA.setText(flaw);
+
+		}
 	}
 
 }
