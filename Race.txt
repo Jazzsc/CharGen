@@ -1,0 +1,14 @@
+Human	32
+Lightfoot Halfling	12
+Stout Halfling	8
+High Elf	6
+Wood Elf	10
+Drow	2
+Hill Dwarf	3
+Mountain Dwarf	7
+Forest Gnome	3
+Rock Gnome	2
+Half Elf	5
+Half Orc	4
+Tiefling	3
+Dragonborn	3
