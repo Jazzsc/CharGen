@@ -191,7 +191,8 @@ public class gui3 implements ActionListener {
 		c.gridy = 0;
 		c.gridwidth = 2;
 		charPane.add(pane, c);
-				
+		
+		c.gridwidth = 1;		
 		c.gridx = 0;
 		c.gridy = 0;
 		pane.add(personaL, c);
@@ -253,7 +254,6 @@ public class gui3 implements ActionListener {
 		}
 		*/
 		
-		
 		for (int i = 0; i<statsL.length; i++){
 			c.gridx = i%2;
 			if (i%2 == 0){
@@ -266,9 +266,6 @@ public class gui3 implements ActionListener {
 			statsPane.add(statsA[i],c);
 			
 		}
-		
-		
-
 		
 		
 		
@@ -329,6 +326,7 @@ public class gui3 implements ActionListener {
 			statsA[3].setText(charStart.getIntel());
 			statsA[4].setText(charStart.getWis());
 			statsA[5].setText(charStart.getCha());
+			
 
 		}
 	}
