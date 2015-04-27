@@ -1,5 +1,3 @@
-package charGen;
-
 import java.lang.Math;
 import java.lang.Object;
 import java.util.Arrays;
@@ -85,7 +83,7 @@ public static void main(String[] args){
 
 	public void raceCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader( in +".txt"))).useDelimiter("\n|\t");
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt")))).useDelimiter("\n|\t");
 			while (s.hasNext()){
 				raceArray.add(s.next());
 				percentages.add(s.next());
@@ -103,7 +101,7 @@ public static void main(String[] args){
 
 	public void jobCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader(in + ".txt")));
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt"))));
 			while (s.hasNext()){
 				jobArray.add(s.next());
 			}
@@ -120,7 +118,7 @@ public static void main(String[] args){
 
 	public void bgCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader( in +".txt"))).useDelimiter("\n|\t");
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt")))).useDelimiter("\n|\t");
 			while (s.hasNext()){
 				bgArray.add(s.next());
 			}
@@ -137,7 +135,7 @@ public static void main(String[] args){
 
 	public void personCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader( in +".txt"))).useDelimiter("\n|\t");
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt")))).useDelimiter("\n|\t");
 			while (s.hasNext()){
 				traitArray.add(s.next());
 			}
@@ -154,7 +152,7 @@ public static void main(String[] args){
 
 	public void flawCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader( in +".txt"))).useDelimiter("\n|\t");
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt")))).useDelimiter("\n|\t");
 			while (s.hasNext()){
 				flawArray.add(s.next());
 			}
@@ -171,7 +169,7 @@ public static void main(String[] args){
 
 	public void idealCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader( in +".txt"))).useDelimiter("\n|\t");
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt")))).useDelimiter("\n|\t");
 			while (s.hasNext()){
 				idealArray.add(s.next());
 			}
@@ -188,7 +186,7 @@ public static void main(String[] args){
 
 	public void bondCollect(String in){
 		try{
-			s = new Scanner(new BufferedReader(new FileReader( in +".txt"))).useDelimiter("\n|\t");
+			s = new Scanner(new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/" + in + ".txt")))).useDelimiter("\n|\t");
 			while (s.hasNext()){
 				bondArray.add(s.next());
 			}

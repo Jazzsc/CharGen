@@ -1,5 +1,3 @@
-package charGen;
-
 import java.awt.*;
 
 import javax.swing.*;
